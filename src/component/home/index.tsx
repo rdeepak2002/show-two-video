@@ -28,16 +28,6 @@ const HomePage = () => {
                 const parseResult = Papa.parse(dataStr);
                 console.log("result", parseResult.data);
             })
-
-            // yarn
-            // yarn start
-
-        // const result = Papa.parse(
-        //     ",A,B,C\n" +
-        //     "A,1,1,1\n" +
-        //     "B,1,1,1\n" +
-        //     "C,1,1,1");
-        // console.log("result", result);
     });
 
     return (
