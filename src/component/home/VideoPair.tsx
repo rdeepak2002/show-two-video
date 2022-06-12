@@ -3,13 +3,20 @@ import {useEffect, useState} from "react";
 import Papa, {ParseResult} from "papaparse";
 import Video from "./Video";
 
-const VideoPair = (props: {title: string, dataSrc: string, video1Src: string, video2Src: string}) => {
+const VideoPair = (props: {currentCarouselIndex: number, carouselIndex: number,
+    title: string, dataSrc: string, video1Src: string, video2Src: string}) => {
     const [playVideo, setPlayVideo] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [csvResult, setCsvResult] = useState<Array<Array<String>>>([[]]);
     const [videoPlaybackLocation, setVideoPlaybackLocation] = useState<{location: number, id: string} | undefined>(
         undefined
     );
+
+    useEffect(() => {
+        if (props.carouselIndex === props.currentCarouselIndex) {
+            setPlayVideo(true);
+        }
+    }, [props.currentCarouselIndex]);
 
     useEffect(() => {
         fetch(props.dataSrc)

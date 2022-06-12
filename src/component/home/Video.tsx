@@ -18,10 +18,6 @@ const Video = (props: { src: string, playVideo: boolean, setPlayVideo: Function,
                 props.setPlayVideo(true);
             };
 
-            // videoEl.current.addEventListener('click', () => {
-            //     console.log("click");
-            // });
-
             videoEl.current.ontimeupdate = (event: any) => {
 
                 if (dirtyVideoPlaybackChangeFlag.current == false) {
