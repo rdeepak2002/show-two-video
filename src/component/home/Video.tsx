@@ -19,11 +19,9 @@ const Video = (props: { src: string, playVideo: boolean, setPlayVideo: Function,
             };
 
             videoEl.current.ontimeupdate = (event: any) => {
-
-                if (dirtyVideoPlaybackChangeFlag.current == false) {
+                if (!dirtyVideoPlaybackChangeFlag.current) {
                     if (videoEl.current.paused) {
                         console.log("streaming new play time from ", id);
-                        // dirtyVideoPlaybackChangeFlag.current = true;
                         props.setVideoPlaybackLocation({location: videoEl.current.currentTime, id: id.current});
                     }
                 } else {
@@ -35,7 +33,7 @@ const Video = (props: { src: string, playVideo: boolean, setPlayVideo: Function,
 
     useEffect(() => {
         if (videoEl && videoEl.current && props.videoPlaybackLocation) {
-            if (dirtyVideoPlaybackChangeFlag.current == false) {
+            if (!dirtyVideoPlaybackChangeFlag.current) {
                 console.log("getting new play time from ", props.videoPlaybackLocation?.id);
                 dirtyVideoPlaybackChangeFlag.current = true;
                 videoEl.current.currentTime = props.videoPlaybackLocation?.location;
