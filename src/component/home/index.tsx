@@ -1,4 +1,6 @@
 import { Carousel } from "react-bootstrap";
+import {useEffect} from "react";
+import Papa from "papaparse";
 
 const Video = (props: {src: string}) => {
     return (
@@ -19,6 +21,25 @@ const VideoPair = () => {
 }
 
 const HomePage = () => {
+    useEffect(() => {
+        fetch("http://localhost:3000/data/data.csv")
+            .then(response => response.text())
+            .then((dataStr) => {
+                const parseResult = Papa.parse(dataStr);
+                console.log("result", parseResult.data);
+            })
+
+            // yarn
+            // yarn start
+
+        // const result = Papa.parse(
+        //     ",A,B,C\n" +
+        //     "A,1,1,1\n" +
+        //     "B,1,1,1\n" +
+        //     "C,1,1,1");
+        // console.log("result", result);
+    });
+
     return (
         <div style={{width: "100%", height: "100%", background: "black"}}>
             <Carousel>
