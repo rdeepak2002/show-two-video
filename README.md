@@ -1,7 +1,8 @@
 ## Requirements
 - node
-- npm
+  - https://nodejs.org/en/download/
 - yarn
+  - https://classic.yarnpkg.com/lang/en/docs/install
 
 ## Get Started
 
