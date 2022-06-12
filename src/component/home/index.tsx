@@ -1,4 +1,4 @@
-import {Button, Carousel, Modal} from "react-bootstrap";
+import {Button, Carousel, Modal, Table} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import Papa, {ParseResult} from "papaparse";
 
@@ -25,13 +25,15 @@ const VideoPair = () => {
             })
     }, []);
 
-    // const csvResultStr = csvResult.map((row) =>
-    //     <tr key={row.toString()}>
-    //         <td>
-    //             {row.toString()}
-    //         </td>
-    //     </tr>
-    // );
+    const csvResultTableRow = (row: Array<String>) => {
+        return row.map((entry) => <td>{entry}</td>)
+    }
+
+    const csvResultTable = csvResult.map((row) =>
+        <tr key={row.toString()}>
+            {csvResultTableRow(row)}
+        </tr>
+    );
 
     return (
         <div style={{
@@ -46,20 +48,14 @@ const VideoPair = () => {
 
             <Modal show={showModal} onHide={() => {setShowModal(false)}}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Data</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <table>
-                        {
-                            csvResult.map((row) =>
-                                <tr key={row.toString()}>
-                                    <td>
-                                        {row.toString()}
-                                    </td>
-                                </tr>
-                            )
-                        }
-                    </table>
+                    <Table>
+                        <tbody>
+                            {csvResultTable}
+                        </tbody>
+                    </Table>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => {setShowModal(false)}}>
