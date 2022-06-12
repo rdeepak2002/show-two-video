@@ -8,9 +8,17 @@
 
 ## Get Started
 
+Run the web app:
+
 ```shell
 git clone https://github.com/rdeepak2002/show-two-video.git
 cd show-two-video
-yarn
-yarn start
+
+yarn          # install dependencies
+yarn start    # start web application
+```
+
+Config file for videos:
+```
+src/config/config.ts
 ```
