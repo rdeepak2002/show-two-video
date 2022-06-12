@@ -7,3 +7,31 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+
+/*.carousel {*/
+/*  height: 100%;*/
+/*}*/
+
+.carousel, .item, .active{
+  height:100%;
+}
+
+.carousel-inner, .carousel-item{
+  height:100%;
+}
+
+.carousel-control-prev:hover {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.carousel-control-next:hover {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/*.carousel-control-next-icon {*/
+/*  visibility: hidden !important;*/
+/*}*/
+
+/*.carousel-control-next-icon:hover {*/
+/*  visibility: visible !important;*/
+/*}*/
