@@ -1,10 +1,36 @@
 import {Button, Carousel, Modal, Table} from "react-bootstrap";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Papa, {ParseResult} from "papaparse";
 
-const Video = (props: { src: string }) => {
+const Video = (props: { src: string, playVideo: boolean, setPlayVideo: Function }) => {
+    const videoEl: any = useRef(null);
+
+    useEffect(() => {
+        if (videoEl && videoEl.current) {
+            videoEl.current.onpause = (event: any) => {
+                props.setPlayVideo(false);
+            };
+
+            videoEl.current.onplay = (event: any) => {
+                props.setPlayVideo(true);
+            };
+        }
+    }, []);
+
+    useEffect(() => {
+        if (videoEl && videoEl.current) {
+            if (props.playVideo) {
+                videoEl.current.play();
+            } else {
+                videoEl.current.pause();
+            }
+        } else {
+            console.error("Unable to play or pause video");
+        }
+    }, [props.playVideo])
+
     return (
-        <video width="50%" height="100%" controls autoPlay={true} muted={true}>
+        <video ref={videoEl} width="50%" height="100%" controls autoPlay={true} muted={true}>
             <source src={props.src} type="video/mp4"/>
             Your browser does not support the video tag.
         </video>
@@ -12,6 +38,7 @@ const Video = (props: { src: string }) => {
 }
 
 const VideoPair = () => {
+    const [playVideo, setPlayVideo] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [csvResult, setCsvResult] = useState<Array<Array<String>>>([[]]);
 
@@ -44,8 +71,8 @@ const VideoPair = () => {
         }}>
             <h3 style={{color: "white"}}>Title</h3>
             <div style={{display: "flex", flexDirection: "row", flex: 0.9}}>
-                <Video src={"video/vid1.mp4"}/>
-                <Video src={"video/vid2.mp4"}/>
+                <Video src={"video/vid1.mp4"} playVideo={playVideo} setPlayVideo={setPlayVideo}/>
+                <Video src={"video/vid2.mp4"} playVideo={playVideo} setPlayVideo={setPlayVideo}/>
             </div>
             <Button variant="light" onClick={() => {
                 setShowModal(true)
