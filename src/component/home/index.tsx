@@ -25,13 +25,11 @@ const VideoPair = () => {
             })
     }, []);
 
-    const csvResultTableRow = (row: Array<String>) => {
-        return row.map((entry) => <td>{entry}</td>)
-    }
-
     const csvResultTable = csvResult.map((row) =>
         <tr key={row.toString()}>
-            {csvResultTableRow(row)}
+            {
+                row.map((entry) => <td>{entry}</td>)
+            }
         </tr>
     );
 
