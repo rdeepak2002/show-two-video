@@ -48,22 +48,27 @@ const VideoPair = () => {
                 <Video src={"video/vid2.mp4"}/>
             </div>
             <Button variant="light" onClick={() => {
-                setShowModal(true)}
+                setShowModal(true)
+            }
             }>View Data</Button>
 
-            <Modal show={showModal} onHide={() => {setShowModal(false)}}>
+            <Modal show={showModal} onHide={() => {
+                setShowModal(false)
+            }}>
                 <Modal.Header closeButton>
                     <Modal.Title>Data</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Table>
                         <tbody>
-                            {csvResultTable}
+                        {csvResultTable}
                         </tbody>
                     </Table>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => {setShowModal(false)}}>
+                    <Button variant="secondary" onClick={() => {
+                        setShowModal(false)
+                    }}>
                         Close
                     </Button>
                 </Modal.Footer>
