@@ -15,6 +15,8 @@ const VideoPair = (props: {currentCarouselIndex: number, carouselIndex: number,
     useEffect(() => {
         if (props.carouselIndex === props.currentCarouselIndex) {
             setPlayVideo(true);
+        } else {
+            setPlayVideo(false);
         }
     }, [props.currentCarouselIndex]);
 
@@ -63,7 +65,7 @@ const VideoPair = (props: {currentCarouselIndex: number, carouselIndex: number,
                 setShowModal(false)
             }}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Data</Modal.Title>
+                    <Modal.Title>{props.title} Data</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Table>
