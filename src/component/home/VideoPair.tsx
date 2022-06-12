@@ -7,6 +7,9 @@ const VideoPair = (props: {title: string, dataSrc: string, video1Src: string, vi
     const [playVideo, setPlayVideo] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [csvResult, setCsvResult] = useState<Array<Array<String>>>([[]]);
+    const [videoPlaybackLocation, setVideoPlaybackLocation] = useState<{location: number, id: string} | undefined>(
+        undefined
+    );
 
     useEffect(() => {
         fetch(props.dataSrc)
@@ -37,8 +40,12 @@ const VideoPair = (props: {title: string, dataSrc: string, video1Src: string, vi
         }}>
             <h3 style={{color: "white"}}>{props.title}</h3>
             <div style={{display: "flex", flexDirection: "row", flex: 0.9}}>
-                <Video src={props.video1Src} playVideo={playVideo} setPlayVideo={setPlayVideo}/>
-                <Video src={props.video2Src} playVideo={playVideo} setPlayVideo={setPlayVideo}/>
+                <Video src={props.video1Src} playVideo={playVideo} setPlayVideo={setPlayVideo}
+                       videoPlaybackLocation={videoPlaybackLocation}
+                       setVideoPlaybackLocation={setVideoPlaybackLocation}/>
+                <Video src={props.video2Src} playVideo={playVideo} setPlayVideo={setPlayVideo}
+                       videoPlaybackLocation={videoPlaybackLocation}
+                       setVideoPlaybackLocation={setVideoPlaybackLocation}/>
             </div>
             <Button variant="light" onClick={() => {
                 setShowModal(true)
