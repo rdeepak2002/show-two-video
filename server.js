@@ -4,7 +4,9 @@ const app = express(); // create express app
 
 // generate config json
 const generateConfigJson = () => {
+    const dataFolderPath = path.join(__dirname, "data");
     const configJsonPath = path.join(__dirname, "public/config/config.json");
+    console.log("DATA FOLDER PATH: " + dataFolderPath);
     console.log("OUTPUT CONFIG TO: " + configJsonPath);
 }
 
