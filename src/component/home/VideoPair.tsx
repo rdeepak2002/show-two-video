@@ -63,7 +63,7 @@ const VideoPair = (props: {
             }
             }>View Data</Button>
 
-            <Modal show={showModal} onHide={() => {
+            <Modal show={showModal} size="xl" onHide={() => {
                 setShowModal(false)
             }}>
                 <Modal.Header closeButton>
