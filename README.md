@@ -20,5 +20,5 @@ yarn start    # start web application
 
 Config file for videos:
 ```
-src/config/config.ts
+public/config/config.json
 ```

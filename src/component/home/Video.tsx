@@ -1,9 +1,11 @@
-import {useEffect, useRef, useState} from "react";
-import { v4 as uuidv4 } from 'uuid';
+import {useEffect, useRef} from "react";
+import {v4 as uuidv4} from 'uuid';
 
-const Video = (props: { src: string, playVideo: boolean, setPlayVideo: Function,
-    videoPlaybackLocation: {location: number, id: string} | undefined,
-    setVideoPlaybackLocation: Function }) => {
+const Video = (props: {
+    src: string, playVideo: boolean, setPlayVideo: Function,
+    videoPlaybackLocation: { location: number, id: string } | undefined,
+    setVideoPlaybackLocation: Function
+}) => {
     const videoEl: any = useRef(null);
     const id = useRef(uuidv4().toString());
     const dirtyVideoPlaybackChangeFlag = useRef<boolean>(false);
@@ -38,8 +40,6 @@ const Video = (props: { src: string, playVideo: boolean, setPlayVideo: Function,
                 dirtyVideoPlaybackChangeFlag.current = true;
                 videoEl.current.currentTime = props.videoPlaybackLocation?.location;
             }
-        } else {
-            console.error("Unable to change video current time");
         }
     }, [props.videoPlaybackLocation])
 
@@ -50,8 +50,6 @@ const Video = (props: { src: string, playVideo: boolean, setPlayVideo: Function,
             } else {
                 videoEl.current.pause();
             }
-        } else {
-            console.error("Unable to play or pause video");
         }
     }, [props.playVideo])
 
