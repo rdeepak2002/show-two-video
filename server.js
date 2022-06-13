@@ -6,7 +6,8 @@ const app = express(); // create express app
 app.use(express.static(path.join(__dirname, "build")));
 app.use(express.static("public"));
 
-// start express server on port 8080
-app.listen(8080, () => {
-    console.log("server started on port 8080");
+// start express server on port
+let PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`server started on port ${PORT}`);
 });

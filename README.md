@@ -26,7 +26,7 @@ public/config/config.json
 ## Deploy for Production
 
 ```shell
-yarn
-yarn build
-yarn start-server-prod
+yarn                    # install dependencies
+yarn build              # build web application for production to build folder
+yarn start-server-prod  # start server in production mode on port 8080 by default
 ```
