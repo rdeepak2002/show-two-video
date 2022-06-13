@@ -22,3 +22,11 @@ Config file for videos:
 ```
 public/config/config.json
 ```
+
+## Deploy for Production
+
+```shell
+yarn
+yarn build
+yarn start-server-prod
+```
