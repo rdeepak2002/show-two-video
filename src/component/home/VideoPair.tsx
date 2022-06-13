@@ -70,7 +70,7 @@ const VideoPair = (props: {
                     <Modal.Title>{props.title} Data</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Table>
+                    <Table style={{maxWidth: "100%"}}>
                         <tbody>
                         {csvResultTable}
                         </tbody>
